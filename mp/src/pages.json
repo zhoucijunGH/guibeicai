@@ -1,0 +1,72 @@
+{
+  "pages": [
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "桂备菜 · 概览"
+      }
+    },
+    {
+      "path": "pages/dishes/dishes",
+      "style": {
+        "navigationBarTitleText": "单菜品维度"
+      }
+    },
+    {
+      "path": "pages/ingredients/ingredients",
+      "style": {
+        "navigationBarTitleText": "食材采购"
+      }
+    },
+    {
+      "path": "pages/compare/compare",
+      "style": {
+        "navigationBarTitleText": "预测对比 / 销量录入"
+      }
+    },
+    {
+      "path": "pages/notice/notice",
+      "style": {
+        "navigationBarTitleText": "采购单推送"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "桂备菜",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F5F7FA",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8a919f",
+    "selectedColor": "#e15554",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "概览"
+      },
+      {
+        "pagePath": "pages/dishes/dishes",
+        "text": "单菜品"
+      },
+      {
+        "pagePath": "pages/ingredients/ingredients",
+        "text": "食材采购"
+      },
+      {
+        "pagePath": "pages/compare/compare",
+        "text": "对比录入"
+      }
+    ]
+  }
+}

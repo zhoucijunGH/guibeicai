@@ -1,0 +1,14 @@
+{
+  "events": [
+    { "city": "all", "type": "summer_vacation", "label": "暑假", "start": "07-01", "end": "08-31" },
+    { "city": "all", "type": "winter_vacation", "label": "寒假", "start": "01-20", "end": "02-15" },
+    { "city": "all", "type": "local_festival", "label": "元宵节", "date": "02-20" },
+    { "city": "all", "type": "local_festival", "label": "中秋节", "date": "09-25" },
+
+    { "city": "all", "type": "guangxi_special", "label": "广西三月三", "note": "农历三月初三，配置为2027年", "dates": ["04-09", "04-10", "04-11", "04-12"] },
+
+    { "city": "南宁市", "type": "local_festival", "label": "蒲庙花婆节", "date": "03-20" },
+    { "city": "柳州市", "type": "local_festival", "label": "三江侗族大歌节", "date": "03-02" },
+    { "city": "柳州市", "type": "local_festival", "label": "融水坡会", "date": "01-28" }    
+  ]
+}

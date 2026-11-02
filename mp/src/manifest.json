@@ -1,0 +1,33 @@
+{
+  "name": "guibeicai-mp",
+  "appid": "",
+  "description": "桂备菜 · 小程序端（老板视角：看预测 / 看采购 / 录销量对比）",
+  "versionName": "0.2.0",
+  "versionCode": "200",
+  "vueVersion": "3",
+  "uniStatistics": {
+    "enable": false
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "enhance": true,
+      "postcss": true,
+      "minified": true
+    },
+    "usingComponents": true,
+    "permission": {}
+  },
+  "h5": {
+    "title": "桂备菜",
+    "router": {
+      "mode": "hash"
+    },
+    "devServer": {
+      "port": 5173,
+      "disableHostCheck": true
+    }
+  }
+}

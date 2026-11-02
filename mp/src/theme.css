@@ -1,0 +1,232 @@
+/**
+ * 桂备菜小程序 · 主题变量与通用样式
+ *
+ * 用法：每个页面根节点写 <view class="page" :class="'theme-' + state.theme">
+ * 主题色沿用 WEB 端 Streamlit 配置（主色 #e15554 / 背景 #f5f7fa / 文字 #1f2733）。
+ */
+
+/* ---------------- 浅色 ---------------- */
+.theme-light {
+  --bg-page: #f5f7fa;
+  --bg-card: #ffffff;
+  --bg-sub: #f0f2f5;
+  --text: #1f2733;
+  --text-sub: #6b7684;
+  --text-weak: #9aa4b2;
+  --border: #e6e9ef;
+  --primary: #e15554;
+  --primary-weak: #fdeeee;
+  --success: #18a058;
+  --success-weak: #e9f6ef;
+  --warn: #f0a020;
+  --warn-weak: #fdf4e6;
+  --danger: #e15554;
+  --danger-weak: #fdeeee;
+  --info: #3b7ddd;
+  --info-weak: #ecf3fd;
+}
+
+/* ---------------- 深色 ---------------- */
+.theme-dark {
+  --bg-page: #12151a;
+  --bg-card: #1b1f26;
+  --bg-sub: #232830;
+  --text: #e5e9f0;
+  --text-sub: #9aa5b4;
+  --text-weak: #6b7684;
+  --border: #2b313b;
+  --primary: #f07b7a;
+  --primary-weak: #2e1f22;
+  --success: #3cb371;
+  --success-weak: #1a2a22;
+  --warn: #e8a33d;
+  --warn-weak: #2b2318;
+  --danger: #f07b7a;
+  --danger-weak: #2e1f22;
+  --info: #5b9cf0;
+  --info-weak: #18222f;
+}
+
+/* ---------------- 通用布局 ---------------- */
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 24rpx 24rpx 40rpx;
+  background: var(--bg-page);
+  color: var(--text);
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1rpx solid var(--border);
+  border-radius: 16rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title .sub {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: var(--text-weak);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row .label {
+  color: var(--text-sub);
+  font-size: 27rpx;
+}
+
+.row .value {
+  color: var(--text);
+  font-size: 27rpx;
+  font-weight: 500;
+}
+
+/* 指标块 */
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.metric {
+  flex: 1;
+  min-width: 44%;
+  background: var(--bg-sub);
+  border-radius: 12rpx;
+  padding: 20rpx;
+}
+
+.metric .m-label {
+  font-size: 23rpx;
+  color: var(--text-sub);
+}
+
+.metric .m-value {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 6rpx;
+}
+
+.metric .m-unit {
+  font-size: 22rpx;
+  font-weight: 400;
+  color: var(--text-weak);
+  margin-left: 4rpx;
+}
+
+/* 标签 */
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  line-height: 1.8;
+}
+
+.tag-primary { background: var(--primary-weak); color: var(--primary); }
+.tag-success { background: var(--success-weak); color: var(--success); }
+.tag-warn    { background: var(--warn-weak);    color: var(--warn); }
+.tag-danger  { background: var(--danger-weak);  color: var(--danger); }
+.tag-info    { background: var(--info-weak);    color: var(--info); }
+
+/* 按钮 */
+.btn {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn:active { opacity: 0.85; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--primary);
+  border: 1rpx solid var(--primary);
+}
+
+.btn-sub {
+  background: var(--bg-sub);
+  color: var(--text);
+  border: 1rpx solid var(--border);
+}
+
+.btn[disabled] { opacity: 0.5; }
+
+/* 空态 / 提示 */
+.empty {
+  padding: 80rpx 0;
+  text-align: center;
+  color: var(--text-weak);
+  font-size: 27rpx;
+}
+
+.empty .e-icon {
+  font-size: 72rpx;
+  display: block;
+  margin-bottom: 16rpx;
+  opacity: 0.5;
+}
+
+.hint {
+  font-size: 24rpx;
+  color: var(--text-weak);
+  line-height: 1.7;
+}
+
+.muted { color: var(--text-sub); }
+.strong { font-weight: 600; }
+.mono { font-variant-numeric: tabular-nums; }
+
+/* 输入框占位符（scoped 样式对 placeholder-class 不生效，故放全局） */
+.f-ph { color: var(--text-weak); }
+
+/* ============================================================
+ * H5 下 uni.setTabBarStyle 是空操作且会抛异常，故用全局 CSS 驱动
+ * 底部 Tab 栏跟随主题。applyThemeClass 会给 <html> 加 theme-dark 类。
+ * 原生平台仍由 store 里的 uni.setTabBarStyle 负责。
+ * ============================================================ */
+html.theme-dark { background-color: #12151a; }
+html.theme-dark body { background-color: #12151a; }
+
+html.theme-dark .uni-tabbar {
+  background-color: #1b1f26 !important;
+}
+html.theme-dark .uni-tabbar-border {
+  background-color: #2b313b !important;
+}
+html.theme-dark .uni-tabbar__label {
+  color: #8a919f !important;
+}
+/* 选中项：uni 给选中 label 内联了浅色品牌红 rgb(225,85,84)，深色下换成浅红 */
+html.theme-dark .uni-tabbar__label[style*="225, 85, 84"] {
+  color: #f07b7a !important;
+}

@@ -1,0 +1,112 @@
+# 桂备菜 - 特征工程配置文件
+
+weather:
+  # 天气实际走 Open-Meteo 免费接口（见 web/_geo.py / _forecast.py），无需 api_key；provider 仅为历史占位
+  provider: "open-meteo"              # 历史曾用 openweathermap，现已统一为 Open-Meteo
+  units: "metric"
+  lang: "zh_cn"
+  timeout: 10                        # 请求超时（秒）
+  retry_times: 2                     # 失败重试次数
+  fallback_weather: "未知"
+  fallback_temp: null                 # 用null表示缺失，后续可填充均值
+
+# 注：门店主数据见 config/stores.yaml（settings.stores 读取）；原顶层 stores 城市映射为遗留配置，已清理（天气城市映射改 _geo.py 动态解析）
+
+feature_params:
+  lag_days: [1, 2, 7, 14]            # 滞后天数
+  rolling_window: 7                   # 滚动窗口大小
+  min_history_days: 14                # 生成特征所需最少历史天数
+
+# ==================== 预测引擎配置（已清理） ====================
+# 说明：prediction 段不再使用——_llm.py 直接硬编码温度/令牌等参数，模型名由 .env 的 LLM_MODEL 控制。
+#       若未来需要可配置预测参数，建议统一走环境变量而非此 YAML。
+
+  # ==================== 采购建议配置 ====================
+purchase:
+  # 安全库存系数
+  safety_factor:
+    perishable: 1.15        # 易腐品（蔬菜、海鲜、鲜肉）
+    non_perishable: 1.25    # 非易腐品（干货、冻品）
+
+  # 库存来源
+  inventory_source: "manual"  # manual | previous_day
+
+  # 品类分组映射（用于生成采购清单）
+  category_keywords:
+    蔬菜类:
+      - "青菜"
+      - "白菜"
+      - "萝卜"
+      - "土豆"
+      - "番茄"
+      - "辣椒"
+      - "葱"
+      - "姜"
+      - "蒜"
+      - "香菜"
+      - "生菜"
+      - "黄瓜"
+      - "冬瓜"
+      - "茄子"
+      - "豆角"
+      - "豆腐"
+    肉类海鲜:
+      - "鸡"
+      - "鸭"
+      - "猪"
+      - "牛"
+      - "羊"
+      - "鱼"
+      - "虾"
+      - "蟹"
+      - "肉"
+      - "火腿"
+      - "香肠"
+    米面粮油:
+      - "米"
+      - "面"
+      - "油"
+      - "粉"
+      - "面粉"
+      - "淀粉"
+      - "杂粮"
+    调味料:
+      - "盐"
+      - "糖"
+      - "酱油"
+      - "醋"
+      - "料酒"
+      - "胡椒"
+      - "辣椒酱"
+      - "豆瓣酱"
+      - "蚝油"
+      - "香油"
+      - "味精"
+      - "鸡精"
+
+
+# ==================== 调度器配置 ====================
+scheduler:
+  timezone: "Asia/Shanghai"
+  max_consecutive_failures: 3       # 连续失败N次触发管理员告警
+
+# ==================== 通知渠道配置 ====================
+notifications:
+  email:
+    enabled: true
+    smtp_host: "smtp.qq.com"
+    smtp_port: 587
+    use_tls: true
+    username: "your_email@qq.com"
+    password: "${EMAIL_PASSWORD}"    # 从环境变量读取，避免硬编码
+    from_name: "桂备菜系统"
+    from_address: "your_email@qq.com"
+
+  wecom:
+    enabled: false                   # MVP阶段关闭，后续开启
+    webhook_url: "${WECOM_WEBHOOK_URL}"
+
+  admin_alert:
+    enabled: true
+    email: "admin@yourdomain.com"   # 管理员邮箱
+    wecom_webhook: "${ADMIN_WEBHOOK_URL}"

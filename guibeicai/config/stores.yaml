@@ -1,0 +1,60 @@
+# 每家门店/老板的推送配置
+# 支持独立配置推送时间、渠道、接收人
+
+stores:
+  - store_name: "桂备菜-总店"
+    owner_name: "张老板"
+    push_time: "22:00"
+    data_file: "data/sales_总店.xlsx"
+    channels:
+      email:
+        enabled: true
+        recipients:
+          - "zhang@example.com"
+          - "kitchen_zhang@example.com"
+      wecom:
+        enabled: false
+        webhook_url: ""
+    current_stock:                    # 当前库存（克）
+      "豆腐": 500
+      "鸡胸肉": 300
+      "花生米": 100
+
+  - store_name: "桂备菜-分店"
+    owner_name: "李老板"
+    push_time: "22:30"
+    data_file: "data/sales_分店.xlsx"
+    channels:
+      email:
+        enabled: true
+        recipients:
+          - "li@example.com"
+      wecom:
+        enabled: false
+    current_stock: {}
+
+  - store_name: "桂备菜-万达店"
+    owner_name: "王老板"
+    push_time: "21:30"
+    data_file: "data/sales_万达店.xlsx"
+    channels:
+      email:
+        enabled: true
+        recipients:
+          - "wang@example.com"
+      wecom:
+        enabled: false
+    current_stock: {}
+
+  - store_name: "桂备菜-临桂店"
+    owner_name: "赵老板"
+    push_time: "22:00"
+    data_file: "data/sales_临桂店.xlsx"
+    channels:
+      email:
+        enabled: true
+        recipients:
+          - "zhao@example.com"
+      wecom:
+        enabled: false
+    current_stock: {}

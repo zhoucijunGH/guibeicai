@@ -1,0 +1,6 @@
+pyyaml
+python-dotenv
+streamlit
+plotly
+cryptography
+chinesecalendar

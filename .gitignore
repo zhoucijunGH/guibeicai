@@ -1,0 +1,31 @@
+# 本地环境与密钥
+.env
+*.env
+!.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pylibs/
+
+# 数据与缓存
+data/*.db
+data/*.db-journal
+data/scheduler.lock
+guibeicai/web/_prophet_cache/
+guibeicai/web/_llm_cache/
+
+# 运行产物
+logs/
+output/
+backups/
+*.log
+
+# 前端
+node_modules/
+mp/dist/
+
+# 编辑器/工具
+.workbuddy/
